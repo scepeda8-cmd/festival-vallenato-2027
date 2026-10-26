@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Opciones
+{% endblock %}
+
+{% block content %}
+
+<h2>
+    {{ votacion.titulo }}
+</h2>
+
+<p class="muted">
+
+    Opciones registradas para esta votación.
+
+</p>
+
+{% for opcion in opciones %}
+
+<div class="card">
+
+    <b>
+        {{ opcion.nombre }}
+    </b>
+
+</div>
+
+{% empty %}
+
+<div class="note">
+    No existen opciones registradas.
+</div>
+
+{% endfor %}
+
+<div class="note">
+
+    Para participar en futuras etapas del proyecto
+    será necesario iniciar sesión antes de registrar
+    un voto.
+
+</div>
+
+<a
+class="btn o"
+href="{% url 'categorias' %}">
+
+    Volver a categorías
+
+</a>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Votaciones
+{% endblock %}
+
+{% block content %}
+
+<h2>
+    {{ categoria.nombre }}
+</h2>
+
+<p class="muted">
+    Selecciona una votación para consultar las opciones
+    participantes.
+</p>
+
+{% for votacion in votaciones %}
+
+<a
+class="card"
+href="{% url 'opciones' votacion.id %}">
+
+    <b>
+        {{ votacion.titulo }}
+    </b>
+
+</a>
+
+{% empty %}
+
+<div class="note">
+
+    No existen votaciones registradas.
+
+</div>
+
+{% endfor %}
+
+<a
+class="btn o"
+href="{% url 'categorias' %}">
+
+    Volver a categorías
+
+</a>
+
+{% endblock %}

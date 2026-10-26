@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Inicio
+{% endblock %}
+
+{% block content %}
+
+<div class="hero">
+
+    <h2>
+        60.ª Edición · Rey de Reyes y Reina de Reinas
+    </h2>
+
+    <p>
+        28 de abril al 1 de mayo de 2027. Participa en las
+        votaciones habilitadas por la Fundación.
+    </p>
+
+</div>
+
+<a class="btn p" href="{% url 'registro' %}">
+    Crear cuenta
+</a>
+
+<a class="btn o" href="{% url 'login' %}">
+    Iniciar sesión
+</a>
+
+<h3>
+    Categorías del Festival
+</h3>
+
+<a class="card" href="{% url 'categorias' %}">
+
+    <b>
+        Explorar categorías
+    </b>
+
+</a>
+
+<div class="note">
+    Sistema Web de Votaciones del Festival de la Leyenda Vallenata 2027.
+</div>
+
+{% endblock %}

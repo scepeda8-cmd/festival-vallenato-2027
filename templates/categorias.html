@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Categorías
+{% endblock %}
+
+{% block content %}
+
+<h2>Categorías del Festival</h2>
+
+<p class="muted">
+    Selecciona una categoría para consultar las votaciones
+    disponibles.
+</p>
+
+{% for categoria in categorias %}
+
+<a
+    class="card"
+    href="{% url 'votaciones' categoria.id %}"
+>
+
+    <b>{{ categoria.nombre }}</b>
+
+    <span class="muted">
+        {{ categoria.edicion.nombre }}
+    </span>
+
+</a>
+
+{% empty %}
+
+<div class="note">
+    No existen categorías registradas.
+</div>
+
+{% endfor %}
+
+<a
+    class="btn o"
+    href="{% url 'inicio' %}"
+>
+    Volver al inicio
+</a>
+
+{% endblock %}
