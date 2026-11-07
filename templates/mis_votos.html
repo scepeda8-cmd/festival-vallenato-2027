@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Mis votos
+{% endblock %}
+
+{% block content %}
+
+<h2>
+    Mis votos registrados
+</h2>
+
+<p class="muted">
+    Historial de participación del usuario.
+</p>
+
+{% for voto in votos %}
+
+<div class="card">
+
+    <b>
+        {{ voto.categoria.nombre }}
+    </b>
+
+    <p>
+        Opción seleccionada:
+        <strong>{{ voto.opcion.nombre }}</strong>
+    </p>
+
+    <p class="muted">
+        {{ voto.edicion.nombre }}
+    </p>
+
+</div>
+
+{% empty %}
+
+<div class="note">
+    Aún no has registrado votos.
+</div>
+
+{% endfor %}
+
+<a href="{% url 'categorias' %}" class="btn o">
+    Volver a categorías
+</a>
+
+{% endblock %}

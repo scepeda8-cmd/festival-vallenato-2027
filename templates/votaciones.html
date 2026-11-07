@@ -18,12 +18,66 @@ Votaciones
 {% for votacion in votaciones %}
 
 <a
-class="card"
-href="{% url 'opciones' votacion.id %}">
+    href="{% url 'opciones' votacion.id %}"
+    class="card"
+>
 
-    <b>
+    {% if votacion.habilitada %}
+
+    <div
+    style="
+    display:inline-block;
+    background:#d4f5dd;
+    color:#1f6f4a;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:10px;
+    ">
+        🟢 ABIERTA
+    </div>
+
+    {% else %}
+
+    <div
+    style="
+    display:inline-block;
+    background:#fde2e2;
+    color:#8b1e1e;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:10px;
+    ">
+        🔴 CERRADA
+    </div>
+
+    {% endif %}
+
+    <b
+    style="
+    display:block;
+    font-size:22px;
+    margin-bottom:10px;
+    ">
         {{ votacion.titulo }}
     </b>
+
+    <span class="muted">
+
+        {% if votacion.habilitada %}
+
+        Disponible para recibir votos.
+
+        {% else %}
+
+        No recibe votos actualmente.
+
+        {% endif %}
+
+    </span>
 
 </a>
 
@@ -38,11 +92,10 @@ href="{% url 'opciones' votacion.id %}">
 {% endfor %}
 
 <a
-class="btn o"
-href="{% url 'categorias' %}">
-
+    href="{% url 'categorias' %}"
+    class="btn o"
+>
     Volver a categorías
-
 </a>
 
 {% endblock %}

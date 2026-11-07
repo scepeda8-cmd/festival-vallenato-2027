@@ -229,56 +229,75 @@ font-weight:700;
 
 <div id="app">
 
-    <header>
+<header>
 
-        <div class="logo">60</div>
+<div class="logo">60</div>
 
-        <h1>
+<h1>
 
-            Festival de la Leyenda Vallenata
+Festival de la Leyenda Vallenata
 
-            <small>
-                Sistema de Votaciones 2027
-            </small>
+<small>
+Sistema de Votaciones 2027
+</small>
 
-            {% if user.is_authenticated %}
-            <small>
-                Bienvenido, {{ user.username }}
-            </small>
-            {% endif %}
+{% if user.is_authenticated %}
 
-        </h1>
+<div
+style="
+margin-top:6px;
+padding:6px 10px;
+background:rgba(217,162,27,.20);
+border-radius:8px;
+display:inline-block;
+font-weight:700;
+font-size:13px;
+color:#ffd56b;
+">
 
-    </header>
+👤 Usuario conectado:
+{{ user.username }}
 
-    {% if user.is_authenticated %}
+</div>
 
-    <div class="usuario-menu">
+{% endif %}
 
-        <span>
-            Sesión iniciada
-        </span>
+</h1>
 
-        {% if user.is_staff %}
+</header>
 
-        <a href="/admin/" class="btn s">
-            Panel Administrador
-        </a>
+{% if user.is_authenticated %}
 
-        {% endif %}
+<div class="usuario-menu">
 
-        <a href="{% url 'logout' %}" class="btn p">
-            Cerrar sesión
-        </a>
+<span>
+Sesión iniciada
+</span>
 
-    </div>
+<a href="{% url 'mis_votos' %}" class="btn o">
+Mis votos
+</a>
 
-    {% endif %}
+{% if user.is_staff %}
+<a href="/admin/" class="btn s">
+Panel Administrador
+</a>
+{% endif %}
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+<a href="{% url 'logout' %}" class="btn p">
+Cerrar sesión
+</a>
+
+</div>
+
+{% endif %}
+
+<main>
+
+{% block content %}
+{% endblock %}
+
+</main>
 
 </div>
 

@@ -3,7 +3,9 @@ from django.urls import path
 from .views import (
     categorias,
     votaciones,
-    opciones
+    opciones,
+    mis_votos,
+    api_categorias
 )
 
 urlpatterns = [
@@ -24,6 +26,18 @@ urlpatterns = [
         'opciones/<int:votacion_id>/',
         opciones,
         name='opciones'
+    ),
+
+    path(
+        'mis-votos/',
+        mis_votos,
+        name='mis_votos'
+    ),
+
+    path(
+        'api/categorias/',
+        api_categorias,
+        name='api_categorias'
     ),
 
 ]
